@@ -1,0 +1,57 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        #app-2 .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">{{ message }}</div>
+    <div id ="app-2">
+        <input type="text" v-model = "message">
+        <div class="error" v-if="error.require">必須項目です。</div>
+        <div class="error" v-if="error.tooLong">長すぎます。</div>
+    </div>
+    <div id="app-103">
+        <input type ="checkbox" @click="change" checked>
+        <span v-show="seen">Hello!</span>
+    </div>
+    <script>
+        const app = new Vue({
+          el: '#app',
+          data: {
+            message: 'Hello World'
+          }
+        })
+        
+        var app2 = new Vue({
+            el: '#app-2',
+            watch: {
+                message: function(newVal, oldVal) {
+                    this.error.require = (newVal.length < 1) ? true:false;
+                    this.error.tooLong = (newVal.length > 5) ? true:false;
+                }
+            },
+            data: {
+                message: 'Hello',
+                error: {
+                    require: false,
+                    tooLong: false
+                }
+            }
+        })
+
+        var app103 = new Vue({
+            el: '#app-103',
+            data: {seen: true},
+            methods: {
+                change: function(e){
+                    this.seen = e.target.checked
+                }
+            }
+        })
+    </script>
+</body>
+</html>

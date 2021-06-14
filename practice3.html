@@ -1,0 +1,53 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app-107">
+        <ul>
+            <li v-for="color in colorList">{{ color }}</li>
+        </ul>
+    </div>
+    <div id="app-108">
+        <button v-on:click="hello">Hello</button>
+        <button @click="hello">Hello</button>
+    </div>
+    <div id="app-109">
+        <input type="button" v-bind:value="message">
+        <input type="button" :value="message">
+    </div>
+    <div id ="app-120">
+        <input v-model="message">
+        <div>Message: {{message}}</div>
+    </div>
+    <div id="app-121">
+        <div v-pre>Message: {{message}}</div>
+        <div>Message:{{message}}</div>
+    </div>
+    <script>
+        var app107 = new Vue({
+            el: '#app-107',
+            data: {colorList: ['Red', 'Green', 'Blue']} 
+        })
+        var app108 = new Vue({
+            el: '#app-108',
+            methods: {
+                hello: function() {
+                    alert("hello!");
+                }
+            }
+        })
+        var app109 = new Vue({
+            el: '#app-109',
+            data: {message: 'Heo!'}
+        })
+        var app120 = new Vue({
+            el: '#app-120',
+            data: {message: 'Hello!'} 
+        })
+        var app121 = new Vue({
+            el:'#app-121',
+            data: {message: 'Hello'}
+        })
+    </script>
+</body>
