@@ -1,0 +1,21 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app-212">
+        <my-heading-212 :level="1">Hello</my-heading-212>
+    </div>
+    <script>
+        Vue.component('my-heading-212', {
+            render: function (createElement) {
+                return createElement('h' + this.level, this.$slots.default)
+            },
+            props: ['level']
+        })
+        var app212 = new Vue({
+            el: '#app-212',
+        })
+    </script>
+</body>
+</html>
